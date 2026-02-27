@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Responsive Website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <h1 class="logo">My Website</h1>
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-content">
+          <h2>Build Something Great</h2>
+          <p>
+            This is a simple, responsive starter website with a clean layout and
+            easy-to-edit sections.
+          </p>
+          <a class="btn" href="#contact">Get in Touch</a>
+        </div>
+      </section>
+
+      <section id="about" class="about section">
+        <div class="container">
+          <h2>About Us</h2>
+          <p>
+            We create modern web experiences focused on usability, performance,
+            and accessibility. This section is fully responsive and adapts well
+            on phones, tablets, and desktop screens.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="contact section">
+        <div class="container">
+          <h2>Contact Us</h2>
+          <form id="contactForm" class="contact-form" novalidate>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit" class="btn">Send Message</button>
+            <p id="formStatus" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
