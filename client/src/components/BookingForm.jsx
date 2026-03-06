@@ -6,7 +6,7 @@ const initialState = {
   email: '',
   phone: '',
   travelDate: '',
-  travelers: 1,
+  travelers: 2,
   notes: ''
 };
 
@@ -32,7 +32,7 @@ function BookingForm({ packageName, packageId }) {
         packageName,
         travelers: Number(formState.travelers)
       });
-      setStatus({ type: 'success', message: 'Booking saved successfully. We will contact you shortly!' });
+      setStatus({ type: 'success', message: 'Booking saved! We will contact you shortly.' });
       setFormState(initialState);
     } catch (error) {
       setStatus({ type: 'error', message: error.message || 'Something went wrong.' });
@@ -41,9 +41,14 @@ function BookingForm({ packageName, packageId }) {
     }
   }
 
+  function resetForm() {
+    setFormState(initialState);
+    setStatus({ type: '', message: '' });
+  }
+
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
-      <h3>Book this package</h3>
+      <h3>Traveler Details</h3>
       <label>
         Full Name
         <input name="fullName" value={formState.fullName} onChange={handleChange} required />
@@ -67,6 +72,7 @@ function BookingForm({ packageName, packageId }) {
             name="travelers"
             type="number"
             min="1"
+            max="10"
             value={formState.travelers}
             onChange={handleChange}
             required
@@ -77,9 +83,16 @@ function BookingForm({ packageName, packageId }) {
         Notes (Optional)
         <textarea name="notes" value={formState.notes} onChange={handleChange} rows="3" />
       </label>
-      <button className="btn" type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Submitting...' : 'Confirm Booking'}
-      </button>
+
+      <div className="btn-row">
+        <button className="btn" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Confirm Booking'}
+        </button>
+        <button className="btn btn-secondary" type="button" onClick={resetForm}>
+          Clear Form
+        </button>
+      </div>
+
       {status.message && <p className={`form-message ${status.type}`}>{status.message}</p>}
     </form>
   );
